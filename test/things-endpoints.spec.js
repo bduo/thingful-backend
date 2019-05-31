@@ -88,7 +88,7 @@ describe('Things Endpoints', function() {
   describe(`GET /api/things/:thing_id`, () => {
     context(`Given thing with id doesn't exist`, () => {
       beforeEach(() => 
-        db.into('thingful_users').insert(testUsers)
+        helpers.makeUsersArray(db, testUsers)
       )
       it(`responds with 404`, () => {
         const thingId = 123456
@@ -155,7 +155,7 @@ describe('Things Endpoints', function() {
   describe(`GET /api/things/:thing_id/reviews`, () => {
     context(`Given no things`, () => {
       beforeEach(() =>
-      db.into('thingful_users').insert(testUsers)
+        helpers.makeUsersArray(db, testUsers)
     )
       it(`responds with 404`, () => {
         const thingId = 123456
