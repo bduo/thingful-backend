@@ -2,6 +2,7 @@ const knex = require('knex')
 const app = require('../src/app')
 const helpers = require('./test-helpers')
 
+
 describe('Reviews Endpoints', function() {
   let db
 
@@ -67,7 +68,6 @@ describe('Reviews Endpoints', function() {
             .then(row => {
               expect(row.text).to.eql(newReview.text)
               expect(row.rating).to.eql(newReview.rating)
-              expect(row.thing_id).to.eql(newReview.thing_id)
               expect(row.user_id).to.eql(testUser.id)
               const expectedDate = new Date().toLocaleString()
               const actualDate = new Date(row.date_created).toLocaleString()
@@ -84,7 +84,7 @@ describe('Reviews Endpoints', function() {
       const newReview = {
         text: 'Test new review',
         rating: 3,
-        thing_id: testThing.id,
+        thing_id: testUser.id, 
       }
 
       it(`responds with 400 and an error message when the '${field}' is missing`, () => {
