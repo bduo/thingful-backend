@@ -12,7 +12,7 @@ usersRouter
         for (const field of ['full_name', 'user_name', 'password']) {
             if (!req.body[field]) {
                 return res.status(400).json({
-                    error: `Missing ${field} in request body`
+                    error: `Missing '${field}' in request body`
                 })
             }
         }
@@ -49,7 +49,7 @@ usersRouter
                             .then(user => {
                                 res
                                     .status(201)
-                                    .location(path.posix.join(req.originalUrl), `/${user.id}`)
+                                    .location(path.posix.join(req.originalUrl, `/${user.id}`))
                                     .json(UsersService.serializeUser(user))
                             })
                     })
