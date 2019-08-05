@@ -9,7 +9,6 @@ const UsersService =  {
             .where({ user_name })
             .first()
             .then(user => !!user)
-            // ask mentor about !!user vs user
     },
     insertUser(db, newUser) {
         return db
